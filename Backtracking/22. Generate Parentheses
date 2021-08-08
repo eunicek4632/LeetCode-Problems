@@ -2,41 +2,10 @@ class Solution {
     int n;
     List<String> list = new LinkedList<String>();
     
-//     method for checking if the string is valid
-    public boolean isValid(String s) {
-        if(s.length() == 0){
-            return true;
-        }
-        
-        Stack<Character> stack = new Stack<Character>();
-        
-        for (int i = 0; i < s.length(); i++){
-            if(s.charAt(i) == '('){
-                stack.push(s.charAt(i));
-            }
-            
-            if(s.charAt(i) == ')'){
-                if(!stack.empty()){
-                    char tmp = stack.peek();
-                    if(tmp == '(' && s.charAt(i) == ')'){
-                        stack.pop();
-                    }
-                    else{
-                        return false;
-                    }
-                }
-                else{
-                    return false;
-                }
-            }
-        }
-        return stack.empty();
-    }
-
     public void recur(String str, int start, int end){
 //         Base case to check if the length is longer than the required strings
         if(str.length() >= this.n * 2){
-            if(this.isValid(str)){
+            if(start == end){
                 // System.out.println(str);
                 this.list.add(str);
             }
